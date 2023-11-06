@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/slickgrid/2.3/slick.grid.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/slickgrid/2.3/slick-default-theme.css" />
+    <link rel="stylesheet" href="../dist/styles/css/example-demo.css" type="text/css"/>
+    <link rel="stylesheet" href="../dist/styles/css/slick-alpine-theme.css" type="text/css"/>
+    <style>
+        /* Agrega estilos CSS personalizados aquí */
+        .slick-header-column {
+            background-color: #007acc;
+            color: white;
+            font-weight: bold;
+        }
+
+        .slick-row {
+            background-color: #f7f7f7;
+        }
+
+        .slick-row.odd {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div id="myGrid" style="width: 600px; height: 200px;"></div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs/Sortable.min.js"></script>
+<script src="sortable-cdn-fallback.js"></script>
+
+<script src="../dist/browser/slick.core.js"></script>
+<script src="../dist/browser/slick.interactions.js"></script>
+<script src="../dist/browser/slick.grid.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/slickgrid/2.3/slick.core.js"></script>
+    <script src="https://cdn.jsdelivr.net/slickgrid/2.3/slick.grid.js"></script>
+    <script>
+        // Datos de muestra
+        var data = [
+            { id: 1, name: "Ejemplo 1", age: 25, city: "Ciudad 1" },
+            { id: 2, name: "Ejemplo 2", age: 30, city: "Ciudad 2" },
+            { id: 3, name: "Ejemplo 3", age: 35, city: "Ciudad 3" },
+            { id: 4, name: "Ejemplo 4", age: 40, city: "Ciudad 4" },
+        ];
+
+        // Columnas
+        var columns = [
+            { id: "id", name: "ID", field: "id", width: 50 },
+            { id: "name", name: "Nombre", field: "name", width: 200 },
+            { id: "age", name: "Edad", field: "age", width: 100 },
+            { id: "city", name: "Ciudad", field: "city", width: 150 }
+        ];
+
+        var options = {
+            enableCellNavigation: true,
+            enableColumnReorder: false,
+            multiColumnSort: true
+        };
+
+        // Crear la tabla SlickGrid
+        var grid = new Slick.Grid("#myGrid", data, columns, options);
+
+        // Ordenar por la columna "name" de forma predeterminada
+        grid.onSort.subscribe(function (e, args) {
+            var comparer = function (a, b) {
+                return a[args.sortCol.field] > b[args.sortCol.field] ? 1 : -1;
+            };
+            data.sort(comparer);
+            grid.invalidate();
+            grid.render();
+        });
+    </script>
+</body>
+</html>
