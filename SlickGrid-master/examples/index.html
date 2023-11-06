@@ -9,7 +9,22 @@
     <link rel="stylesheet" href="../dist/styles/css/slick-alpine-theme.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
-
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .agregar{
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .agregar:hover {background-color: #3e8e41;}
+    .agregar:active{background-color: #2e6430;}
+</style>
 <body>
     <h2 style="text-align: center;">REPORTE DEL LÍDER</h2><br />
     <div class="container">
@@ -88,7 +103,7 @@
         </div>
 
         <div class="Asisten">
-            <a>Faltaron el Sábado:</a> <button>+ Agregar</button><button>- Eliminar</button>
+            <a>Faltaron el Sábado:</a> <button class="agregar">+ Agregar</button><button class="Eliminar">- Eliminar</button>
             <div style="position:relative">
                 <div style="width:475px;">
                     <div id="myGrid" class="slick-container" style="width:100%;height:150px;"></div>
@@ -96,7 +111,7 @@
             </div>
 
             <div class="asisten2">
-                <a>Faltaron el Domingo</a> <button>+ Agregar</button><button>- Eliminar</button>
+                <a>Faltaron el Domingo</a> <button class="agregar">+ Agregar</button><button>- Eliminar</button>
                 <div style="position: relative;">
                     <div style="width: 475px;">
                         <div id="myGrid2" class="slick-container" style="width: 100%;height: 150px;"></div>
