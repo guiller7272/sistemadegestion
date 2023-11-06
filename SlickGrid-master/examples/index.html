@@ -30,7 +30,7 @@
                         Hermanos
                     </th>
                     <td>
-                        <input maxlength="3">
+                        <input maxlength="3" id="herm">
                     </td>
                 </tr>
                 <tr>
@@ -38,7 +38,7 @@
                         Amigo(s)
                     </th>
                     <td>
-                        <input maxlength="3">
+                        <input maxlength="3" id="amig">
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +46,7 @@
                         Asistencia Total
                     </th>
                     <td>
-                        <input id="totalasis">
+                        <input id="totalasis" value="" disabled>
                     </td>
                 </tr>
             </table>
@@ -117,6 +117,32 @@
         <script src="../dist/browser/plugins/slick.cellselectionmodel.js"></script>
         <script src="../dist/browser/slick.formatters.js"></script>
         <script src="../dist/browser/slick.editors.js"></script>
+        <script>
+            // Obtiene los elementos input por su ID
+            var hermanosInput = document.getElementById("herm");
+            var amigosInput = document.getElementById("amig");
+            var totalAsistenciaInput = document.getElementById("totalasis");
+        
+            // Agrega un evento de escucha al input de hermanos
+            hermanosInput.addEventListener("input", calcularTotalAsistencia);
+            
+            // Agrega un evento de escucha al input de amigos
+            amigosInput.addEventListener("input", calcularTotalAsistencia);
+        
+            // Función para calcular la suma y actualizar el input totalAsistencia
+            function calcularTotalAsistencia() {
+                // Obtiene los valores de los inputs de hermanos y amigos como números
+                var hermanos = parseInt(hermanosInput.value) || 0;
+                var amigos = parseInt(amigosInput.value) || 0;
+        
+                // Calcula la suma
+                var totalAsistencia = hermanos + amigos;
+        
+                // Actualiza el valor del input totalAsistencia
+                totalAsistenciaInput.value = totalAsistencia;
+            }
+        </script>
+        
         <script>
             function requiredFieldValidator(value) {
                 if (value == null || value == undefined || !value.length) {
